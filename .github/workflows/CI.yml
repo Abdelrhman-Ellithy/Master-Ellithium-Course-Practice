@@ -1,0 +1,56 @@
+name: CI Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  Suite-Tests:
+    name: Suite Tests - Java ${{ matrix.java-version }}
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        java-version: [21]
+      fail-fast: false
+    
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'zulu'
+
+      - name: Maven Dependency Cache
+        uses: actions/cache@v3
+        id: maven-cache
+        with:
+          path: |
+            ~/.m2/repository
+            !~/.m2/repository/Master-Ellithium-Course-Practice
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}-${{ matrix.java-version }}
+          restore-keys: |
+            ${{ runner.os }}-maven-${{ matrix.java-version }}
+            ${{ runner.os }}-maven-
+      
+      - name: Download Dependencies
+        if: steps.maven-cache.outputs.cache-hit != 'true'
+        run: mvn dependency:go-offline
+        continue-on-error: true
+
+      - name: Clean up previous test output
+        run: |
+          rm -rf Test-Output/Reports/*
+          rm -rf Test-Output/Logs/*
+          rm -rf Test-Output/ScreenShots/Failed/*
+          find Test-Output/UpdateChecker/ -type f ! -name 'checker.json' -delete
+
+      - name: Run Tests
+        id: run-tests
+        run: |
+          mvn clean test 
