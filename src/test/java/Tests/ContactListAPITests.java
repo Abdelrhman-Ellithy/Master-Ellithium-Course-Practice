@@ -12,8 +12,6 @@ import static io.restassured.RestAssured.given;
 
 public class ContactListAPITests extends NonBDDSetup {
     private Environment env;
-    private final String USER_EMAIL = "testtt@fake.com";
-
     @BeforeClass
     public void setUp() {
         RestAssured.baseURI = "https://thinking-tester-contact-list.herokuapp.com/";
@@ -22,7 +20,7 @@ public class ContactListAPITests extends NonBDDSetup {
         // Store test data in environment
         env.set("firstName", "Amy");
         env.set("lastName", "Smith");
-        env.set("userEmail", USER_EMAIL);
+        env.set("userEmail", "testtt@fake.com");
     }
 
     @Test(priority = 1)
@@ -35,6 +33,7 @@ public class ContactListAPITests extends NonBDDSetup {
                 """.formatted(env.get("userEmail"));
 
         Response response = given()
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(payload)
                 .when()
@@ -87,6 +86,8 @@ public class ContactListAPITests extends NonBDDSetup {
     public void getContactList() {
         Response response = given()
                 .header("Authorization", "Bearer " + env.get("token"))
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .get("/contacts");
 
@@ -103,6 +104,8 @@ public class ContactListAPITests extends NonBDDSetup {
     public void getSingleContact() {
         Response response = given()
                 .header("Authorization", "Bearer " + env.get("token"))
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .get("/contacts/" + env.get("contactId"));
 
@@ -130,6 +133,7 @@ public class ContactListAPITests extends NonBDDSetup {
                 """;
 
         Response response = given()
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + env.get("token"))
                 .body(payload)
@@ -148,6 +152,8 @@ public class ContactListAPITests extends NonBDDSetup {
     @Test(priority = 6)
     public void deleteContact() {
         Response response = given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + env.get("token"))
                 .when()
                 .delete("/contacts/" + env.get("contactId"));
@@ -170,6 +176,7 @@ public class ContactListAPITests extends NonBDDSetup {
                 """.formatted(env.get("userEmail"));
 
         Response response = given()
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(payload)
                 .when()
@@ -192,6 +199,7 @@ public class ContactListAPITests extends NonBDDSetup {
                 """;
 
         Response response = given()
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + env.get("token"))
                 .body(payload)
@@ -208,6 +216,8 @@ public class ContactListAPITests extends NonBDDSetup {
     @Test(priority = 9)
     public void getContactListUnauthorized() {
         Response response = given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer abcdf")
                 .when()
                 .get("/contacts");

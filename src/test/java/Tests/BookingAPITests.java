@@ -31,6 +31,7 @@ public class BookingAPITests extends NonBDDSetup {
                 """;
         Response response = given()
                 .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
                 .body(payload)
                 .when()
                 .post("/auth");
@@ -63,6 +64,7 @@ public class BookingAPITests extends NonBDDSetup {
 
         Response response = given()
                 .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
                 .body(payload)
                 .when()
                 .post("/booking"); //
@@ -79,6 +81,8 @@ public class BookingAPITests extends NonBDDSetup {
     @Test(priority = 3)
     public void getAllBookings() {
         Response response = given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .get("/booking");
         AssertionExecutor.soft soft=new AssertionExecutor.soft();
@@ -92,6 +96,8 @@ public class BookingAPITests extends NonBDDSetup {
     @Test(priority = 4)
     public void getSingleBooking() {
         Response response = given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .get("/booking/" + env.getAsInteger("bookingId"));
         AssertionExecutor.soft soft=new AssertionExecutor.soft();
@@ -125,6 +131,7 @@ public class BookingAPITests extends NonBDDSetup {
 
         Response response = given()
                 .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
                 .header("Cookie", "token="+ env.get("token"))
                 .body(payload)
                 .when()
@@ -146,6 +153,8 @@ public class BookingAPITests extends NonBDDSetup {
     public void deleteCreatedBooking() {
         Response response = given()
                 .header("Cookie", "token="+ env.get("token"))
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .when()
                 .delete("/booking/" + env.getAsInteger("bookingId"));
         AssertionExecutor.soft soft=new AssertionExecutor.soft();

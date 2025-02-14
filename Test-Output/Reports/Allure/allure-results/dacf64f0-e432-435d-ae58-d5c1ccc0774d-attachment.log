@@ -163,17 +163,3 @@
 2025-02-14 21:48:32 INFO  Logger - [92mSoft Assert: Condition is true: true - Response time exceeded[0m
 2025-02-14 21:48:32 ERROR Logger - [91mSoft Assertions Completed and Failed. Validating all collected conditions.[0m
 2025-02-14 21:48:32 INFO  Logger - [91m[FAILED] TESTCASE deleteCreatedBooking [FAILED][0m
-2025-02-14 21:48:32 INFO  Logger - Log file successfully attached to the Allure report.
-2025-02-14 21:48:32 INFO  Logger - [95m[ALL TESTS COMPLETED]: MASTER-ELLITHIUM-COURSE-PRACTICE [ALL TESTS COMPLETED][0m
-2025-02-14 21:48:32 INFO  Logger - [38;5;200m[SUITE FINISHED]: DEFAULT SUITE [SUITE FINISHED][0m
-2025-02-14 21:48:32 INFO  Logger - [94mTotal Execution Time is: 0 Min 9 Sec 161 Mills[0m
-2025-02-14 21:48:32 INFO  Logger - [94m------------------------------------------[0m
-2025-02-14 21:48:32 INFO  Logger - [96m------- Ellithium Engine TearDown --------[0m
-2025-02-14 21:48:32 INFO  Logger - [94m------------------------------------------[0m
-2025-02-14 21:48:32 INFO  Logger - [92mAllure folder exists at: C:\Users\lenovo\.m2\repository\allure-Ellithium[0m
-2025-02-14 21:48:32 INFO  Logger - [92mFound Allure binary directory: C:\Users\lenovo\.m2\repository\allure-Ellithium\-2.30.0\bin[0m
-2025-02-14 21:48:32 INFO  Logger - [92mAttempting to execute command: C:\Users\lenovo\.m2\repository\allure-Ellithium\-2.30.0\bin\allure generate --single-file --name "Test Report" -o .\LastReport\ .\Test-Output/Reports/Allure/allure-results\[0m
-2025-02-14 21:48:36 INFO  Logger - [92mCommand executed successfully. Exit code: 0[0m
-2025-02-14 21:48:36 INFO  Logger - [94mGetting Timestamp: 2025-02-14-9-48-36PM[0m
-2025-02-14 21:48:36 INFO  Logger - [92mAttempting to execute command: start Test-Output\Reports\Allure\allure-report\Ellithium-Test-Report-2025-02-14-9-48-36PM.html[0m
-2025-02-14 21:48:37 INFO  Logger - [92mCommand executed successfully. Exit code: 0[0m
