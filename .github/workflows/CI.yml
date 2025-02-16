@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
     
     steps:
-
       - name: Check out code
         uses: actions/checkout@v4
 
@@ -32,7 +31,7 @@ jobs:
         with:
           path: |
             ~/.m2/repository
-            !~/.m2/repository/Master-Ellithium-Course-Practice
+            !~/.m2/repository/io/github/abdelrahman-ellithy/ellthium
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}-${{ matrix.java-version }}
           restore-keys: |
             ${{ runner.os }}-maven-${{ matrix.java-version }}
@@ -53,4 +52,4 @@ jobs:
       - name: Run Tests
         id: run-tests
         run: |
-          mvn clean test 
+          mvn test
