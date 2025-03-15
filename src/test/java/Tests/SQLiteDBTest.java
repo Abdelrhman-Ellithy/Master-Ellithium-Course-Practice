@@ -3,7 +3,6 @@ package Tests;
 import Ellithium.Utilities.assertion.AssertionExecutor;
 import Ellithium.core.DB.SQLDBType;
 import Ellithium.core.DB.SQLDatabaseProvider;
-import Ellithium.core.base.NonBDDSetup;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +13,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.*;
 
-public class SQLiteDBTest extends NonBDDSetup {
+public class SQLiteDBTest{
     protected SQLDatabaseProvider provider;
     protected static final String DB_PATH = "src/test/resources/TestData/test_provider.db";
     protected AssertionExecutor.soft softAssert;

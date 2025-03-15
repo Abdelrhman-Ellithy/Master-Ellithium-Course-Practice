@@ -1,7 +1,6 @@
 package Tests;
 import Ellithium.Utilities.assertion.AssertionExecutor;
 import Ellithium.core.API.Environment;
-import Ellithium.core.base.NonBDDSetup;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -10,7 +9,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class ContactListAPITests extends NonBDDSetup {
+public class ContactListAPITests {
     private Environment env;
     @BeforeClass
     public void setUp() {

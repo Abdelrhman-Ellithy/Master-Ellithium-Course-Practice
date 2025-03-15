@@ -2,10 +2,9 @@ package Tests;
 
 import Ellithium.Utilities.assertion.AssertionExecutor;
 import Ellithium.Utilities.helpers.*;
-import Ellithium.core.base.NonBDDSetup;
 import org.testng.annotations.Test;
 
-public class HelpersTest extends NonBDDSetup {
+public class HelpersTest {
 
     @Test
     public void TestPDFHelper(){
