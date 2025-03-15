@@ -4,3 +4,4 @@ line 3
 line 4
 Test TextHelper
 line5
+line5
